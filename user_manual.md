@@ -77,23 +77,5 @@ Transition addition:
 planner.replanAfterTransitionAddition(newTransition);
 ```
 
-## 7. GitHub submission
 
-A GitHub account and an authenticated Git installation are required to create/push the repository. From the project root:
-
-```bash
-git init
-git add .
-git commit -m "PCCST503 Assignment 1 - Safe Semantic Planner"
-git branch -M main
-git remote add origin https://github.com/YOUR_USERNAME/PCCST503-Assignment-1.git
-git push -u origin main
-```
-
-The GitHub repository must first be created as an empty repository named `PCCST503-Assignment-1` (or any preferred name). Then replace `YOUR_USERNAME` with the GitHub username.
-
-After pushing, the submission link will be:
-
-```text
-https://github.com/YOUR_USERNAME/PCCST503-Assignment-1
 ```
