@@ -1,68 +1,204 @@
 # PCCST503 – Machine Learning
+
 ## Assignment 1: Design of a Safe Semantic Planner in a Finite Cartesian State Space
 
-This repository contains a complete C++ implementation, design report, experimental results, and user manual for Assignment 1.
+### Student Details
 
-### Chosen algorithm
-**D* Lite** is used because the assignment explicitly permits D* Lite and requires replanning when transition availability, transitions, or the goal changes.
+Name: **[Your Name]**
+Register Number: **[Your Register Number]**
+Course: **Machine Learning**
 
-### Features implemented
-- Finite Cartesian state representation using `uint64_t` IDs and `vector<double>` embeddings.
-- Directed transitions with cost, safety, reliability, and availability.
-- Initial and goal state handling.
-- Bad-state avoidance: bad states are never expanded or selected for a path.
-- Safety-aware optimization using Euclidean distance to the nearest bad state.
-- Reliability-aware transition weighting.
-- D* Lite incremental replanning for transition availability changes.
-- Goal update with graph/safety data reused.
-- Transition insertion and replanning.
-- Metrics required by the assignment: goal success, bad states visited, path cost, minimum safety distance, explored states, planning time, memory usage, and replanning time.
-- Six illustrative test cases from the assignment.
+---
 
-### Project structure
-```text
-PCCST503_Assignment1/
-├── src/
-│   └── main.cpp
-├── docs/
-│   ├── design_report.md
-│   └── user_manual.md
-├── results/
-│   └── experimental_results.txt
-├── tests/
-│   └── test_cases.md
-├── CMakeLists.txt
-├── .gitignore
-└── README.md
-```
+## 📌 Project Description
 
-### Requirements
-- C++17 compatible compiler
-- CMake 3.15+ (optional; direct `g++` compilation is also supported)
+This project implements a safe semantic planner in a finite Cartesian state space using the **D* Lite Algorithm**.
 
-### Compile and run with g++
+The planner finds safe and reliable paths between an initial state and a goal state while avoiding predefined bad states.
+
+The program considers:
+
+* Transition cost
+* State safety
+* Transition reliability
+* Transition availability
+* Dynamic changes in the environment
+
+The D* Lite algorithm enables efficient incremental replanning when transitions or the goal state change.
+
+---
+
+## 📥 Inputs
+
+The planner accepts:
+
+1. Initial state
+2. Goal state
+3. Cartesian state representation
+4. Directed transitions
+5. Transition costs
+6. Safety information
+7. Reliability values
+8. Transition availability
+9. Bad states
+
+---
+
+## 📤 Outputs
+
+The program produces:
+
+* Planned path from initial state to goal
+* Goal success status
+* Bad states visited
+* Path cost
+* Minimum safety distance
+* Number of explored states
+* Planning time
+* Memory usage
+* Replanning time
+* Results for different test cases
+
+---
+
+## 🛠️ Technologies Used
+
+* C++17
+* STL
+* CMake
+* D* Lite Algorithm
+* Euclidean distance
+* Priority Queue
+* Graph-based state representation
+
+---
+
+## ⚙️ How to Run the Project
+
+### Step 1: Install a C++ Compiler
+
+Install a C++17-compatible compiler such as GCC.
+
+Make sure the compiler is added to PATH.
+
+---
+
+### Step 2: Compile Using g++
+
+Open a terminal in the project folder and run:
+
 ```bash
 g++ -std=c++17 -O2 -Wall -Wextra -pedantic src/main.cpp -o planner
+```
+
+---
+
+### Step 3: Run the Application
+
+Run:
+
+```bash
 ./planner
 ```
 
-### Compile with CMake
+---
+
+### Step 4: Compile Using CMake
+
+Create a build directory:
+
 ```bash
 mkdir build
 cd build
 cmake ..
 cmake --build .
+```
+
+Run the generated executable:
+
+```bash
 ./safe_planner
 ```
 
-### Algorithm summary
-The implementation uses D* Lite's `g`, `rhs`, priority queue, and predecessor/successor graph structures. The effective transition weight is:
+---
 
-`effective_cost = transition_cost + safety_penalty + reliability_penalty`
+## 📊 Visualization / Results
 
-where the safety penalty increases when the destination state is close to a bad state, and the reliability penalty increases as transition reliability decreases. Bad states are hard constraints and are therefore excluded rather than merely penalized.
+The application evaluates the planner using different test cases.
 
-The heuristic is a scaled Euclidean distance. The scale is chosen from the minimum effective-cost-per-unit-distance among usable transitions, keeping the heuristic a lower bound for the effective edge cost under the implemented model.
+The results include:
 
-### Important note about GitHub
-The assignment package is complete locally. A GitHub repository cannot be created or pushed from this environment because there is no authenticated GitHub connection available. The final section of the user manual gives the exact commands to create the GitHub repository and push these files.
+* Successful or unsuccessful goal reachability
+* Path cost
+* Safety distance from bad states
+* Number of explored states
+* Initial planning time
+* Replanning time
+* Memory usage
+* Effect of transition and goal changes
+
+Six illustrative test cases are included as part of the assignment.
+
+---
+
+## 📖 Algorithm Used
+
+**D* Lite Algorithm**
+
+D* Lite is an incremental path-planning algorithm designed for environments where the graph or path costs can change.
+
+The implementation uses:
+
+1. `g` values
+2. `rhs` values
+3. Priority queue
+4. Predecessor states
+5. Successor states
+6. Incremental replanning
+
+The effective transition cost is calculated using:
+
+```text
+effective_cost =
+    transition_cost
+    + safety_penalty
+    + reliability_penalty
+```
+
+The safety penalty increases when a destination state is close to a bad state.
+
+The reliability penalty increases when transition reliability decreases.
+
+Bad states are treated as hard constraints and are never selected or expanded during path planning.
+
+The planner uses a scaled Euclidean distance as its heuristic.
+
+When transition availability, transitions, or the goal changes, D* Lite reuses previously calculated information and performs incremental replanning instead of calculating the complete path from scratch.
+
+---
+
+## 📁 Project Structure
+
+```text
+PCCST503_Assignment1/
+│
+│   └── main.cpp
+│
+│   └── design_report.md
+│   └── user_manual.md
+│
+│   └── experimental_results.txt
+│
+├── testcases/
+│   └── test_cases.md
+│
+└── README.md
+```
+
+---
+
+## 🔓 Repository Status
+
+This repository contains the complete implementation, design report, experimental results, test cases, and user manual required for the assignment.
+
+The repository is public as required by the assignment instructions.
