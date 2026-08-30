@@ -182,18 +182,20 @@ When transition availability, transitions, or the goal changes, D* Lite reuses p
 ```text
 PCCST503_Assignment1/
 │
-│   └── main.cpp
-│
-│   └── design_report.md
-│   └── user_manual.md
-│
-│   └── experimental_results.txt
-│
-├── testcases/
+├── Testcases/
+│   ├── Test_Case_1,2.png
+│   ├── Test_Case_3.png
+│   ├── Test_Case_4.png
+│   ├── Test_Case_5.png
+│   ├── Test_Case_6.png
+│   ├── experimental_results.txt
 │   └── test_cases.md
 │
-└── README.md
-```
+├── LICENSE
+├── README.md
+├── design_report.md
+├── main.cpp
+└── user_manual.md
 
 ---
 
