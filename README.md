@@ -4,8 +4,8 @@
 
 ### Student Details
 
-Name: **[Your Name]**
-Register Number: **[Your Register Number]**
+Name: **SIVANANDHA K**
+Register Number: **TCR24CS064**
 Course: **Machine Learning**
 
 ---
